@@ -1,0 +1,8 @@
+.widget-logic-children{
+	display: none;
+	margin-top: 5px;
+    padding-left: 15px;
+}
+li.active .widget-logic-children{
+	display: block;
+}

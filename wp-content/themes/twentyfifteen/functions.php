@@ -367,3 +367,10 @@ require get_template_directory() . '/inc/template-tags.php';
  * @since Twenty Fifteen 1.0
  */
 require get_template_directory() . '/inc/customizer.php';
+
+
+add_filter('woocommerce_get_price_html_from_to', 'mtheme_get_price_html_from_to', 10, 3);
+function mtheme_get_price_html_from_to( $price, $from, $to ){
+	
+	return '<ins>' . ( ( is_numeric( $to ) ) ? wc_price( $to ) : $to ) . '</ins> <del>' . ( ( is_numeric( $from ) ) ? wc_price( $from ) : $from ) . '</del>';
+}
