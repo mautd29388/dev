@@ -107,7 +107,73 @@ function kreme_meta_boxes() {
 	foreach ( $my_meta_box as $meta_box ) {
 		ot_register_meta_box ( $meta_box );
 	}
+	
+	/* $my_meta_tax = array (
+				
+			
+			array (
+					'id' => 'background-metabox',
+					'title' => __ ( 'Background Title', 'kreme' ),
+					'desc' => __ ( '', 'kreme' ),
+					'pages' => array ( 'category' ),
+					'context' => 'normal',
+					'priority' => 'high',
+					'fields' => array (
+							
+							array(
+									'id'          => '__layout',
+									'label'          => '',
+									'type'        => 'radio-image',
+									'std'			=> 'full-width',
+									'choices'     => array(
+											array(
+													'value'   => 'full-width',
+													'label'   => 'Full Width (no sidebar)',
+													'src'     => OT_URL . '/assets/images/layout/full-width.png'
+											),
+											array(
+													'value'   => 'left-sidebar',
+													'label'   => 'Left Sidebar',
+													'src'     => OT_URL . '/assets/images/layout/left-sidebar.png'
+											),
+											array(
+													'value'   => 'right-sidebar',
+													'label'   => 'Right Sidebar',
+													'src'     => OT_URL . '/assets/images/layout/right-sidebar.png'
+											)
+									),
+							),
+							array(
+									'id'          => '__sidebar',
+									'label'          => __( 'Sidebar Select', 'kreme' ),
+									'type'        => 'sidebar-select',
+									'condition'   => '__layout:not(full-width)'
+							),
+							array(
+									'id'          => '__width',
+									'label'       => __( 'Sidebar Width', 'kreme' ),
+									'desc'        => __( 'The width of the sidebar determined by <code>%</code> of <code>12</code>.', 'kreme' ),
+									'type'        => 'numeric-slider',
+									'min_max_step'=> '1,12,1',
+									'condition'   => '__layout:not(full-width)'
+							),
+							array(
+									'id'          => '__el_class',
+									'label'       => __( 'Extra class name', 'kreme' ),
+									'desc'        => __( 'Style particular content element differently - add a class name and refer to it in custom CSS..', 'kreme' ),
+									'type'        => 'text',
+									'condition'   => '__layout:not(full-width)'
+							)
+					)
+			)
+	);
+	
+	foreach ( $my_meta_tax as $meta_tax ) {
+		mTheme_register_term_meta ( $meta_tax );
+	} */
 }
+
+
 
 /**
  * Script Metabox

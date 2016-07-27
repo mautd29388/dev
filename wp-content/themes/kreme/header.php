@@ -14,11 +14,6 @@
 	$header_top_sidebar				= kreme_get_options('header_top_sidebar');
 	$header_middle_sidebar			= kreme_get_options('header_middle_sidebar');
 	$header_bottom_sidebar			= kreme_get_options('header_bottom_sidebar');
-	
-	/*
-	if ( $style == 'style-v2' ) {
-		$container = 'container-fluid';
-	}*/
 ?>
 </head>
 

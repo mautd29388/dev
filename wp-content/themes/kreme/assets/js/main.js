@@ -3,17 +3,77 @@
 	
 	$( window ).load(function() {
 		
-		$('body.loadpage:before').hide();
-		if ( $('body').hasClass('loadpage') ) {
-			$('body').removeClass('loadpage');
-		}
 		
-		// Top Banner 
-		$( window ).scroll( function() {
-			if ( $('body').hasClass('hideBanner') ) {
-				$('body').removeClass('hideBanner');
-				$(this).scrollTop(0);
-			}
+		
+		// Filter Img & replace to placehold.it
+		$('body').imagesLoaded(function() {
+			
+			var $url =  window.location.href;
+			
+			$.ajax({
+				url: $url,
+				cache: false,
+			}).done(function( html ) {
+				
+				var $html = html;
+				
+				$('body').find('img').each(function() {
+					var $this 	= $(this),
+						$width 	= $this.width(),
+						$height	= $this.height(),
+						$src	= "http://placehold.it/" + $width + "x" + $height + "/333";
+					
+					$html = $html.replace($this.attr("src"), $src); 
+					
+				});
+				//console.log($html);
+				
+				var image = new Image();
+				$( "*" ).each(function(e) {
+					var $this = $(this),
+						$bg = $this.css('background-image'),
+						$style = $this.attr('style');
+					
+					if ( $bg != 'none' && typeof $style !== "undefined" && $style != 'none' && $style.length > 0 ) {
+						image.src = $bg.replace(/url\((['"])?(.*?)\1\)/gi, '$2').split(',')[0];
+						
+						//console.log(image.src);
+						var $width = image.width,
+							$height = image.height,
+							$src = "http://placehold.it/" + $width + "x" + $height + "/333",
+							$url = "url(" + $src + ")",
+							$__style = $style.replace(/url\((['"])?(.*?)\1\)/gi, $url).split(',')[0];
+							
+						$html = $html.replace($style, $__style); 
+					
+					}
+					
+				});
+				
+				console.log($html);
+				
+			});
+		}); 
+		
+		
+		$('body').find('.section').each( function() {
+			var $section = $(this);
+			new Waypoint({
+				element: $section[0],
+				handler: function(direction) {
+					
+					var $element = $(this.element);
+					
+					$element.find('.animated').each(function() {
+						var $animate = $(this).attr('data-animate');
+						if ( typeof $animate !== "undefined" ){
+							$(this).addClass($animate);
+						};
+			    		
+			    	});
+				},
+				offset: '35%',
+			});
 		});
 		
 	});
@@ -21,245 +81,342 @@
 	
 	$(document).ready(function() {
 		
-		// Mega menu
-		mtheme_mage_menu();
 		
-		// Custom Select
-		mtheme_custom_select($('.woocommerce-ordering select'));
-		
-		// Load Filter Products
-		$('.woocommerce').on('click', '.products .view-mode a', function(e) {
-			
-			e.preventDefault();
-			
-			var $this 	= $(this),
-				$url	= '',
-				$parent = $this.parents('.view-mode'); 
-			
-			if ( $this.hasClass('active') )
-				return false;
-			
-			$url = $this.attr('href');
-			
-			mtheme_filter_products( $url, $this );
-			
-		});
-		$('.woocommerce').on('click', '.woocommerce.widget_layered_nav a', function(e) {
-			
-			e.preventDefault();
-			
-			var $this 	= $(this),
-				$url	= '',
-			
-			$url = $this.attr('href');
-			
-			mtheme_filter_products( $url, $this );
-			
-		});
-		$('.woocommerce').on( 'submit', '.woocommerce.widget_price_filter form, form.woocommerce-ordering', function(e) {
-			e.preventDefault();
-			
-			mtheme_filter_products( '?' + $(this).serialize(), $(this) );
-		});
-		// End Filter
-		
-		
-		$('.mtheme-post-type').find('.gallery-flickity').each(function(){
-			var $flickity = $(this);
-			
-			$flickity.imagesLoaded(function() {
-				$flickity.flickity({
-					contain: true,
-					imagesLoaded: true,
-					freeScroll: false,
-					cellAlign: 'left',
-					wrapAround: true,
-					prevNextButtons: true,
-					pageDots: false
-				});
-				
-				
+		// Header Sticky
+		var $header = $('.header');
+		if ( $header.length > 0 && !$header.hasClass('header-style-v2') && $header.find('.header-top').length < 1 ) {
+			new Waypoint.Sticky({
+			  element: $header[0],
+			  wrapper: '<div class="header-sticky" />',
+			  stuckClass: 'header-stuck',
+			  offset: '-0.1px'
 			});
-		})
+		}
 		
 		
-		// Sidebar Floating
-		$('.sidebar-floating').on('click', '.floating-button', function(e) {
-			e.preventDefault();
+		
+		// Slider Slider
+		var $slider = $('#slider .slider-wrapper');
+		if ( $slider.length > 0 ) {
+			$slider.imagesLoaded(function() {
+				$slider.find('.nivoSlider').nivoSlider({
+					pauseTime: 5000,
+					directionNav: false,
+				    controlNav: false,
+				    randomStart: false, 
+				    beforeChange: function(){
+				    	//$slider.find('.nivo-caption').find('.animated').each(function() {
+				    		//$(this).addClass('fadeOut');
+				    	//});
+				    },    
+				    afterChange: function(){
+				    	//$slider.find('.nivo-caption').find('.animated').each(function() {
+				    		//$(this).addClass($(this).attr('data-animate'));
+				    	//});
+				    },        
+				    slideshowEnd: function(){
+				    },     
+				    lastSlide: function(){
+				    },         
+				    afterLoad: function(){
+				    	//$slider.find('.nivo-caption').find('.animated').each(function() {
+				    		//$(this).addClass($(this).attr('data-animate'));
+				    	//});
+				    },         
+				});
+			});
+		}
+		
+		/* Instagram Feed */
+		var $instafeed = $('#instafeed');
+		
+		if ( $instafeed.length > 0 ) {
 			
-			$('.sidebar-floating').toggleClass('active');
-		});
+			 var userFeed = new Instafeed({
+		        get: 'user',
+		        userId: '1781628684',
+		        accessToken: '1781628684.4b03285.12991eb23cc6413b85243368d8c8b2f8',
+		        template: '<div class="instagram_thumbnail"><a href="{{link}}"><img src="{{image}}" /></a></div>',
+		        limit: 9
+		    });
+		    userFeed.run();
+		}
+		
+		// Flickity slider
+		//Testimonial v1
+		if ( $('.testimonials-slider .slider-flickity').length > 0 ) {
+			$('.testimonials-slider .slider-flickity').imagesLoaded(function() {
+				$('.testimonials-slider .slider-flickity').flickity({
+					wrapAround: true,
+					imagesLoaded: true,
+					prevNextButtons: false,
+					pageDots: true,
+					cellAlign: 'left',
+					arrowShape: { 
+						  x0: 30,
+						  x1: 60, y1: 30,
+						  x2: 70, y2: 30,
+						  x3: 40
+						}
+				});
+			});
+		}
+		//Clients Logo
+		if ( $('.clients-logo-slider .slider-flickity').length > 0 ) {
+			$('.clients-logo-slider .slider-flickity').imagesLoaded(function() {
+				$('.clients-logo-slider .slider-flickity').flickity({
+					wrapAround: false,
+					contain: true,
+					freeScroll: false,
+					imagesLoaded: true,
+					prevNextButtons: true,
+					pageDots: false,
+					cellAlign: 'left',
+					arrowShape: { 
+						  x0: 25,
+						  x1: 50, y1: 25,
+						  x2: 60, y2: 20,
+						  x3: 40
+						}
+				});
+			});
+		}
+		//Clients Logo
+		if ( $('.blog-slider .slider-flickity').length > 0 ) {
+			$('.blog-slider .slider-flickity').imagesLoaded(function() {
+				$('.blog-slider .slider-flickity').flickity({
+					wrapAround: false,
+					contain: true,
+					freeScroll: false,
+					imagesLoaded: true,
+					prevNextButtons: false,
+					pageDots: false,
+					cellAlign: 'left',
+					arrowShape: { 
+						  x0: 25,
+						  x1: 50, y1: 25,
+						  x2: 60, y2: 20,
+						  x3: 40
+						}
+				});
+			});
+		}
+		//cats-list
+		if ( $('.cats-list-slider .slider-flickity').length > 0 ) {
+			$('.cats-list-slider .slider-flickity').imagesLoaded(function() {
+				$('.cats-list-slider .slider-flickity').flickity({
+					wrapAround: true,
+					contain: true,
+					freeScroll: false,
+					imagesLoaded: true,
+					prevNextButtons: false,
+					pageDots: false,
+					cellAlign: 'center',
+					arrowShape: { 
+						  x0: 25,
+						  x1: 50, y1: 25,
+						  x2: 60, y2: 20,
+						  x3: 40
+						}
+				});
+			});
+		}
 		
 		
-		// Products Tab
-		$('.mTheme-products-tab').each( function(){
-			var $this 			=  $(this),
-				$tabs			= '',
-				$tab_content 	= '',
-				$active			= '',
-				$parent 		= $this.parent();
+		//Countdown Time
+		$('[data-countdown]').each(function() {
+			var $this = $(this), finalDate = $(this).data('countdown');
 			
-			$tabs 		= '<div class="mtheme-products-tabs"><ul class="nav nav-tabs"></ul><div class="tab-content"></div></div>';
-		
-			if ( $parent.children('.mtheme-products-tabs').length < 1 ) {
-				$parent.append($tabs);
-				$active = 'active';
-			} else{
-				$active = '';
-			}
-			
-			$parent.find('.mtheme-products-tabs .nav-tabs').append('<li class="'+ $active +'"><a data-toggle="tab" href="#'+ $this.attr('id') +'">'+ $this.find('.wpb_heading').html() +'</a></li>');
-			$parent.find('.mtheme-products-tabs .tab-content').append('<div id="'+ $this.attr('id') +'" class="tab-pane '+ $active +'"><div class="mtheme-products-inner">'+ $this.find('.mtheme-products-inner').html() +'</div></div>');
-
-			$this.remove();
+			$this.countdown(finalDate, function(event) {
+				
+				$this.html(event.strftime('<div class="countdown-items">'
+						+ '<div class="countdown-item"><span class="f-color">%D</span> days</div>'
+						+ '<div class="countdown-item"><span class="f-color">%H</span> Hours</div>'
+						+ '<div class="countdown-item"><span class="f-color">%M</span> Minutes</div>'
+						+ '<div class="countdown-item"><span class="f-color">%S</span> Seconds</div>'
+						+ '</div>'));
+					
+			});
 		});
 		
 		
 	});
 	
-	// Custom select
-	function mtheme_custom_select( $elements ) {
-		// Iterate over each select element
-		$elements.each(function () {
-
-		    // Cache the number of options
-		    var $this = $(this),
-		        numberOfOptions = $(this).children('option').length;
-
-		    // Hides the select element
-		    $this.addClass('s-hidden');
-
-		    // Wrap the select element in a div
-		    $this.wrap('<div class="select"></div>');
-
-		    // Insert a styled div to sit over the top of the hidden select element
-		    $this.after('<div class="styledSelect"></div>');
-
-		    // Cache the styled div
-		    var $styledSelect = $this.next('div.styledSelect');
-
-		    // Show the first select option in the styled div
-		    $styledSelect.text($this.children('option:selected').text());
-
-		    // Insert an unordered list after the styled div and also cache the list
-		    var $list = $('<ul />', {
-		        'class': 'options'
-		    }).insertAfter($styledSelect);
-
-		    // Insert a list item into the unordered list for each select option
-		    for (var i = 0; i < numberOfOptions; i++) {
-		        $('<li />', {
-		            text: $this.children('option').eq(i).text(),
-		            rel: $this.children('option').eq(i).val()
-		        }).appendTo($list);
-		    }
-
-		    // Cache the list items
-		    var $listItems = $list.children('li');
-
-		    // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
-		    $styledSelect.click(function (e) {
-		        e.stopPropagation();
-		        $('div.styledSelect.active').each(function () {
-		            $(this).removeClass('active').next('ul.options').hide();
-		        });
-		        $(this).toggleClass('active').next('ul.options').toggle();
-		    });
-
-		    // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
-		    // Updates the select element to have the value of the equivalent option
-		    $listItems.click(function (e) {
-		        e.stopPropagation();
-		        $styledSelect.text($(this).text()).removeClass('active');
-		        $list.hide();
-		        /* alert($this.val()); Uncomment this for demonstration! */
-		        $this.val($(this).attr('rel'));
-		        
-		        if ( $this.parents('.woocommerce-ordering').length > 0 ) {
-		        	$this.closest( 'form' ).submit();
-		        }
-		    });
-
-		    // Hides the unordered list when clicking outside of it
-		    $(document).click(function () {
-		        $styledSelect.removeClass('active');
-		        $list.hide();
-		    });
-
-		});
-	}
 	
-	// Mega menu
-	function mtheme_mage_menu() {
-		
-		var $mega = $('.mega-menu-wrap'),
-			position_left = 0;
-		
-		$mega.each( function() {
-			
-			var $this = $(this);
-
-			if ( $this.hasClass('full-width') ) {
-				position_left = $this.offset().left - ($(window).innerWidth() - $this.innerWidth())/2;
-				$this.css({
-		            'left': -position_left
-		        });
-				
-			} else if ( $this.hasClass('pos-center') ) {
-				position_left = $this.innerWidth()/2;
-				$this.css({
-		            'left': -position_left
-		        });
-			}
-		});
-	}
-	
-	// Filter Products
-	function mtheme_filter_products( $url, $element ) {
-		
-		var $products = $('body').find('.products'),
-			$data = '';
-		
-		window.history.pushState({path:$url},'',$url);
-		
-		$( document ).ajaxStart(function() {
-			$('body').addClass('loadding');
-		});
-		$( document ).ajaxStop(function() {
-			$('body').removeClass('loadding');
-		});
-		
-		$.ajax({
-			url: $url,
-			data: $data, 
-			cache: false,
-		}).done(function( html ) {
-			
-			// Change Content
-			$products.html($(html).find('.products').html());
-			
-			// Change widget layered nav
-			$('body').find('.woocommerce.widget_layered_nav').each(function() {
-				$(this).html($(html).find('#' + $(this).attr('id')).html());
-			}); 
-			
-			// Change widget price filter
-			$('body').find('.woocommerce.widget_price_filter').each(function() {
-				$(this).find('.price_label').nextAll('input').remove();
-				$(this).find('.price_label').after($(html).find('#' + $(this).attr('id') + ' .price_label').nextAll('input'));
-				
-				if ( $products.find('.view-mode .active').length > 0 ) {
-					$(this).find('.price_label').after('<input type="hidden" value="'+ $products.find('.view-mode .active').attr('data-view') +'" name="view">');
-				}
-			});
-			
-			// Custom Select
-			mtheme_custom_select($('.woocommerce-ordering select'));
-			
-		})
-		.fail(function() {
-			location.reload();
-		})
-	}
-	
+    
 })(jQuery);
+
+
+var mtheme_maps = 
+				[
+				 	{ 
+				 		LatLng: "-37.724667, 144.878328",
+				 	}
+				];
+	
+	function initialize( $canvas, $options ) {
+		
+		var grayStyles = [
+		                  {
+		                      "featureType": "administrative",
+		                      "elementType": "labels.text.fill",
+		                      "stylers": [
+		                          {
+		                              "color": "#444444"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "landscape",
+		                      "elementType": "geometry.fill",
+		                      "stylers": [
+		                          {
+		                              "visibility": "on"
+		                          },
+		                          {
+		                              "color": "#e3e3e3"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "poi",
+		                      "elementType": "all",
+		                      "stylers": [
+		                          {
+		                              "visibility": "off"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "poi",
+		                      "elementType": "geometry",
+		                      "stylers": [
+		                          {
+		                              "visibility": "on"
+		                          },
+		                          {
+		                              "color": "#c6c6c6"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "road",
+		                      "elementType": "all",
+		                      "stylers": [
+		                          {
+		                              "saturation": -100
+		                          },
+		                          {
+		                              "lightness": 45
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "road.highway",
+		                      "elementType": "all",
+		                      "stylers": [
+		                          {
+		                              "visibility": "simplified"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "road.arterial",
+		                      "elementType": "labels.icon",
+		                      "stylers": [
+		                          {
+		                              "visibility": "off"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "road.local",
+		                      "elementType": "geometry.fill",
+		                      "stylers": [
+		                          {
+		                              "visibility": "on"
+		                          },
+		                          {
+		                              "color": "#cecece"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "transit",
+		                      "elementType": "all",
+		                      "stylers": [
+		                          {
+		                              "visibility": "off"
+		                          }
+		                      ]
+		                  },
+		                  {
+		                      "featureType": "water",
+		                      "elementType": "all",
+		                      "stylers": [
+		                          {
+		                              "color": "#c6c6c6"
+		                          },
+		                          {
+		                              "visibility": "on"
+		                          }
+		                      ]
+		                  }
+		              ];
+		
+		
+		// Multi Maps
+		var mapOptions,
+			map,
+			$LatLng,
+			i,
+			marker = [],
+			infowindow = [];
+		
+		$LatLng = $options[0].LatLng.split(", "); 
+		
+		mapOptions = {
+				center : new google.maps.LatLng($LatLng[0], $LatLng[1]),
+				zoom : 15,
+				styles : grayStyles,
+				
+				panControl: false,
+				zoomControl: true,
+				mapTypeControl: false,
+				streetViewControl: false,
+				scrollwheel: false, 
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+			};
+			
+		map = new google.maps.Map($canvas,
+				mapOptions);
+		
+		for ( i = 0; i < $options.length; i++ ) {
+			
+			var $_LatLng = $options[i].LatLng.split(", "); 
+			
+			marker[i] = new google.maps.Marker({
+				map : map,
+				position : new google.maps.LatLng($_LatLng[0], $_LatLng[1]),
+				icon: '../assets/imgs/icon/map.png',
+				key: i,
+			});
+		
+			if ( typeof $options[i].desc_contact !== "undefined" && $options[i].desc_contact.length > 0 ) {
+				infowindow[i] = new google.maps.InfoWindow();
+				infowindow[i].setContent($options[i].desc_contact); 
+				
+				//infowindow[i].open(map, marker[i]);
+				google.maps.event.addListener(marker[i], 'click', function() {
+					infowindow[this.key].open(map, marker[this.key]);
+				}); 
+			}
+		}
+	}
+
+
+var $map_canvas = document.getElementById("map-canvas");
+
+if ( typeof mtheme_maps !== "undefined" && mtheme_maps.length > 0 && $map_canvas != null) {
+	google.maps.event.addDomListener(window, 'load', initialize($map_canvas, mtheme_maps ));
+}

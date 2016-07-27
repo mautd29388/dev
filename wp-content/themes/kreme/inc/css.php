@@ -1,35 +1,8 @@
 <?php
 
 /**
- * Extend body classes
- */
-add_filter ( 'body_class', 'kreme_body_classes' );
-function kreme_body_classes($classes) {
-
-	if ( is_front_page() )
-		$classes [] = 'loadpage';
-
-	$classes [] = kreme_get_options('main_styles', '');
-	
-	return $classes;
-}
-
-/**
- * Extend Product classes
- */
-add_filter ( 'post_class', 'kreme_post_classes' );
-function kreme_post_classes($classes) {
-
-	if ( function_exists('is_woocommerce') && is_woocommerce() && !is_product() )
-		$classes [] = 'animated fadeInUp';
-
-	return $classes;
-}
-
-/**
  * Custom Style
  */
-add_action ( 'wp_head', 'kreme_style' );
 function kreme_style() {
 
 	$style = '';

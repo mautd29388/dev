@@ -1,0 +1,349 @@
+/* 
+==========================================================================
+
+Author: mTheme
+
+Content Tabel
++---------------+
+
+- General Classes
+- Elements
+- Common-Stuff
+
+- Featured color: #adc32b
+- Secondary Color: 
+========================================================================== */
+
+/* Color */
+body,
+.wpcf7-form{
+	color: #666666;
+}
+.header-top,
+.woocommerce .products .product .price del,
+.woocommerce .summary .price del,
+.blog-v2 .post .entry-meta,
+.popular_posts .entry-meta,
+.single .entry-meta,
+.comment-list .author-name small{
+	color: #999999;
+}
+ul.navbar-nav a,
+.section-welcome .section-content i,
+.entry-title,
+.section-title,
+.cats-list .cat-title,
+.countdown-items,
+.hot-detail .entry-thumbnail fieldset a,
+.shop-about ul li strong,
+.products .loadmore a,
+.woocommerce .summary .tags,
+.woocommerce-tabs .reviews-title,
+#ingredients-nutrition address,
+.blog .buttons .readmore,
+.entry-content h1, 
+.entry-content h2, 
+.entry-content h3, 
+.entry-content h4, 
+.entry-content h5, 
+.entry-content h6,
+.entry-content blockquote,
+.single .entry-footer label,
+.comment-list .author-name,
+.comment-list .comment-reply{
+	color: #000;
+}
+.header-top .phone .fa,
+.header .cart-icon .cart-count,
+.section-welcome .section-content figure .more,
+.section-products .section-header .section-title,
+ .testimonial .entry-body,
+ .section-custom,
+ .buttons .button,
+ .woocommerce .buttons .button,
+ .wpcf7-form label,
+ .blog .entry-date,
+ .footer-button,
+ .footer-info .widget-title,
+ .page-title,
+ .products .filter,
+ .products .product .add_to_cart_button:after,
+ .section-custom-1 .section-subtitle,
+ .woocommerce-tabs .wc-tabs li a,
+ .pagination .page-numbers.current,
+.pagination .page-numbers:hover,
+.blog .buttons .readmore:hover,
+.single .entry-footer .entry-social a:hover,
+.contact-info,
+.cat-detail .entry .buttons .button:hover,
+ .sidebar .widget_tag_cloud .tagcloud a:hover,
+ .cats-list .cat.is-selected .cat-title,
+ .cats-list .cat .cat-title:hover{
+	color: #FFF;
+}
+ .flickity-prev-next-button:hover .arrow{
+	fill: #FFF;
+}
+.section-products .section-header .section-subtitle,
+.cat-detail,
+.footer-button .subscribe-lable .subtitle,
+.breadcrumb{
+	color: #f4f4f4;
+}
+.footer-info,
+.entry-content blockquote:before,
+.entry-content blockquote:after,
+.single .entry-social a{
+	color: #b4b4b4;
+}
+.testimonial .entry-content:after{
+	color: #716f68;
+}
+.flickity-prev-next-button .arrow{
+	fill: #959595;
+}
+a,
+.f-color,
+.header a:hover,
+ul.navbar-nav a:hover,
+ul.navbar-nav li:hover > a,
+ul.navbar-nav li.active > a,
+.nutrition-philosophy-items  .nutrition-philosophy-item:hover .entry-title a,
+.testimonial .entry-skill,
+.select-wrap:after,
+.copyright .navbar-nav > li > a:hover,
+.footer-info a:hover,
+.breadcrumb a:hover,
+.shop-about  .entry-title,
+.products .filter .button.active,
+.products .filter .button:hover,
+ .products .product .add_to_cart_button:before,
+ .woocommerce .summary .product_title,
+ .woocommerce .star-rating span,
+ #tab-description ul li:before,
+ .ingredients-nutrition .nutrition ul li .percent,
+ .blog-v2 .post .entry-meta a:hover,
+ .sidebar .widget .widget-title,
+ .sidebar .widget ul > li:before,
+ .sidebar .widget a:hover,
+ .shop-about ul li:before,
+ .single .entry-meta a:hover,
+ .single .entry-footer a:hover,
+ .single .comment-title,
+ .comment-list .author-name a:hover,
+ .comment-list .comment-reply a:hover,
+ .cat-detail .entry .buttons .button,
+ .entry-title a:hover,
+ .buttons .button:hover, 
+.woocommerce .buttons .button:hover,
+.cats-list ul li:hover .entry a,
+.cats-list ul li.active .entry a,
+.footer-social a:hover,
+.products .product .add_to_cart_button:hover:after,
+.products .loadmore a:hover,
+.related-product .related-product-title,
+.section-welcome .section-content figure .more:hover{
+	color: #adc32b;
+}
+.hot-detail .entry-subtitle span,
+.copyright a:hover,
+.woocommerce .products .product .price,
+.woocommerce .summary .price,
+.cat-detail .featured-products ul a:hover{
+	color: #ee4e1a;
+}
+
+
+/* Background */
+.header-top-right .widget + .widget:after,
+.header-top ul.menu > li + li:after{
+	background-color: #d3d3d3;
+}
+.flickity-prev-next-button{
+	background-color: #ebebeb;
+}
+.entry-thumbnail > a:after,
+.instagram .instagram_thumbnail a:after{
+	background-color: #000;
+}
+.testimonials-slider .flickity-page-dots .dot,
+.countdown-items,
+.hot-detail .entry-thumbnail fieldset a,
+.countdown:after,
+.select-wrap,
+.products .filter .button.active,
+.products .filter .button:hover,
+.section-custom-1 .section-content a,
+.cat-detail .entry .buttons .button,
+.footer-social a:hover,
+.section-welcome .section-content figure .more:hover{
+	background-color: #FFF;
+}
+.section-products,
+.prodcut-summary,
+.comment-list .comment-main,
+.woocommerce-tabs{
+	background-color: #f9f9f9;
+}
+.bg-f-color,
+.header-top .phone .fa,
+.header .cart-icon .cart-count,
+.section-welcome .section-content figure .more,
+.section-bg .section-inner:after,
+.nutrition-philosophy-items .entry-thumbnail .np-icon,
+.testimonial .entry-title:after,
+.testimonials-slider .flickity-page-dots .dot.is-selected,
+.why-choose-us ul .entry-thumbnail,
+.flickity-prev-next-button:hover,
+.section-custom:before,
+.buttons .button,
+.woocommerce .buttons .button,
+.blog .entry-date,
+.footer-button,
+.products .filter,
+.products .product .add_to_cart_button:after,
+.woocommerce-tabs .woocommerce-tabs-nav,
+.pagination .page-numbers.current,
+.pagination .page-numbers:hover,
+.blog .buttons .readmore:hover,
+.single .entry-social a:hover,
+.contact-info,
+.tagcloud a:hover,
+.navbar-toggle .icon-bar{
+	background-color: #adc32b;
+}
+
+
+/* Border */
+.section-products .section-header:after,
+.section-products .section-header:before,
+.cat-detail .entry .buttons .button:hover,
+.footer-social a{
+	border-color: #fff;
+}
+.section-header:before,
+.section-clients-logo,
+.countdown-items .countdown-item + .countdown-item,
+.related-product .related-product-title:before{
+	border-color: #ebebeb;
+}
+.nutrition-philosophy-items .box-image:after,
+.blog .buttons .readmore,
+.pagination .page-numbers,
+.widget_search .search-field,
+.tagcloud a,
+.single .entry-social a,
+form input, 
+form select, 
+form textarea,
+.navbar-collapse,
+.contact-info .contact-info-item + .contact-info-item{
+	border-color: #e1e1e1;
+}
+.welcome-info:after,
+.section-header:after,
+.why-choose-us ul li + li .entry-thumbnail:after,
+.products .container > .row > .product,
+.products .product:nth-child(n):after,
+.woocommerce .summary .summary-header,
+.woocommerce .summary .quantity input,
+.pagination .page-numbers.current,
+.pagination .page-numbers:hover,
+.pagination,
+.blog .buttons .readmore:hover,
+.single .entry-footer,
+.single .entry-social a:hover,
+.comment-list .comment-content,
+form input:focus, 
+form select:focus, 
+form textarea:focus,
+.buttons .button:hover, 
+.woocommerce .buttons .button:hover,
+.tagcloud a:hover,
+.products .product .add_to_cart_button:after,
+.related-product .related-product-title:after,
+.section-welcome .section-content figure .more{
+	border-color: #adc32b;
+}
+
+
+/* Fill */
+
+
+
+/* Font */
+body,
+.comment-list .author-name small{
+	font-family: 'Kameron', serif;
+}
+.section-title,
+.title,
+.entry-title,
+#primary-navigation,
+.section-welcome .section-content figure .more,
+.buttons .button,
+.woocommerce .buttons .button,
+.cats-list .cat-title,
+.hot-detail .entry-subtitle span,
+.countdown-items .countdown-item .f-color,
+.hot-detail .entry-thumbnail fieldset a,
+.blog .entry-date,
+.footer-button .subscribe-lable .title,
+.footer-info .widget-title,
+.page-title,
+.shop-about ul li,
+.products .filter,
+.woocommerce .products .product .price,
+.woocommerce .summary .price,
+.products .loadmore a,
+.woocommerce .summary .tags,
+.woocommerce-tabs .wc-tabs li,
+.woocommerce-tabs .reviews-title,
+.sidebar .widget .widget-title,
+.entry-content h1, 
+.entry-content h2, 
+.entry-content h3, 
+.entry-content h4, 
+.entry-content h5, 
+.entry-content h6,
+.single .entry-footer label,
+.single .comment-title,
+.comment-list .author-name,
+.comment-list .comment-reply,
+.related-product .related-product-title{
+	font-family: 'Dosis', sans-serif;
+}
+
+/* Clearings */
+.welcome-info .welcome-info-item:after,
+.welcome-info .welcome-info-item:before,
+.why-choose-us ul li:before,
+.why-choose-us ul li:after,
+.countdown-items:before,
+.countdown-items:after,
+.popular_posts .entry:after,
+.popular_posts .entry:before,
+.single .entry-footer:after,
+.single .entry-footer:before,
+.comment-body:after,
+.comment-body:before,
+p:after,
+p:before,
+.entry:after,
+.entry:before,
+.footer .subscribe:after,
+.footer .subscribe:before{
+	content: "";
+	display: table;
+}
+.welcome-info .welcome-info-item:after,
+.why-choose-us ul li:after,
+.countdown-items:after,
+.popular_posts .entry:after,
+.single .entry-footer:after,
+.comment-body:after,
+p:after,
+.entry:after,
+.footer .subscribe:after{
+	clear: both;
+}

@@ -5,7 +5,8 @@ function kreme_widgets_init() {
 			'name' => __ ( 'Widget Area', 'kreme' ),
 			'id' => 'widget-area',
 			'description' => __ ( '', 'kreme' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
+			//'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-inner">',
+			'before_widget' => "<aside id='' class='widget'><div class='widget-inner'>",
 			'after_widget' => '</div></aside>',
 			'before_title' => '<h3 class="title">',
 			'after_title' => '</h3>' 
@@ -438,14 +439,6 @@ class mTheme_Widget_Callback{
 	    
 	    <?php } ?>
 	    
-	    <!-- 
-	    <p>
-	    
-	    	<label for="<?php echo $t->get_field_id( 'widget_logic' ); ?>">
-	    	<input class="checkbox" type="checkbox"<?php checked( 'is_single', $widget_logic ); ?> id="<?php echo $t->get_field_id( 'widget_logic' ); ?>" name="<?php echo $t->get_field_name( 'widget_logic' ); ?>" value="is_single"/>
-			<?php _e( 'Widget Logic' ); ?></label>
-		</p>-->
-			
 	    <?php
 	    
 	    $retrun = null;
@@ -477,10 +470,11 @@ class mTheme_Widget_Callback{
 	 	
 	 	// Custom Classes Widget
 	 	if ( isset( $widget_opt[$widget_num]['classes'] ) ) {
-	 		$classes = $widget_opt[$widget_num]['classes'];
+	 		$classes 	= 'class="' . $widget_opt[$widget_num]['classes'] . ' ';
+	 		$__classes 	= "class='" . $widget_opt[$widget_num]['classes'] . " ";
 	 		
-	 		$params[0]['before_widget']	= '<div class="'. $classes .'">' . $params[0]['before_widget'];
-	 		$params[0]['after_widget']	= $params[0]['after_widget'] . '</div>';
+	 		$params[0]['before_widget'] = preg_replace('/class="/', $classes, $params[0]['before_widget'], 1);
+	 		$params[0]['before_widget'] = preg_replace("/class='/", $__classes, $params[0]['before_widget'], 1);
 	 	}
 	 	
 	 	return $params;

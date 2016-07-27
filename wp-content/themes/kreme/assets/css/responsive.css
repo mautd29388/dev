@@ -1,0 +1,324 @@
+/* 
+==========================================================================
+
+Author: mTheme
+
+Content Tabel
++---------------+
+
+-General Classes
+-Elements
+-Common-Stuff
+
+========================================================================== */
+
+
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 992px) {
+}
+@media screen and (min-width: 1200px) {
+}
+@media screen and (min-width: 1900px) {
+	.hot-detail .entry-thumbnail{
+	    left: -345px;
+	 	position: absolute;
+	    top: -60px;
+	    z-index: 99;
+	    display: block;
+	}
+	.countdown:after{
+		left: -150px;
+	}
+	.hot-detail .entry-content{
+		padding-left: 115px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	#primary-navigation .navbar-nav > li + li {
+		margin-left: 25px;
+	}
+	.countdown-items .countdown-item{
+		padding: 0 15px;
+	}
+	.wpcf7-form .contact-form-dog input{
+		width: 90px;
+	}
+	.wpcf7-form .contact-form-cat input{
+		width: 130px;
+	}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	#primary-navigation .navbar-nav > li + li {
+	    margin-left: 5px;
+	}
+}
+@media screen and (max-width: 1199px) {
+	.section {
+	    padding: 70px 0 50px;
+	}
+	.section-products{
+		padding: 0 0 220px;
+	}
+	.section-testimonials{
+		padding: 135px 0 50px;
+	}
+	.testimonials-slider .slider-flickity {
+	    padding-bottom: 55px;
+	}
+	.section-radius:after{
+		height: 500px;
+	}
+	.welcome-info .welcome-info-item + .welcome-info-item {
+	    margin-top: 45px;
+	}
+	.nutrition-philosophy-items {
+	    padding-top: 0;
+	}
+	body .main-contents .nutrition-philosophy-items ul li.nutrition-philosophy-item{
+		margin: 0;
+	}
+	body .main-contents .nutrition-philosophy-items ul li.nutrition-philosophy-item + li{
+		margin-top: 25px;
+	}
+	.nutrition-philosophy-items .box-image:after{
+		display: none;
+	}
+	.nutrition-philosophy-items .box-image img {
+	    margin-top: 45px;
+	    transform: translate(0px, 0px);
+			-webkit-transform: translate(0px, 0px);
+	}
+	.nutrition-philosophy-items .box-image{
+		height: auto;
+	}
+	.clients-logo-slider .client-logo{
+		width: 33.33%;
+	}
+	.blog .post .entry{
+		padding: 0;
+	}
+	.footer-info .widget{
+		padding-left: 0 !important;
+	}
+	.footer-button {
+	    padding: 35px 0;
+	}
+	.footer-social{
+		text-align: center;
+		margin-top: 35px;
+	}
+	.cat-detail .entry{
+		padding: 0;
+	}
+	.cat-detail .entry-thumbnail img{
+		max-width: 100%;
+	}
+	.cats-list {
+	    margin-top: 0;
+	    padding-top: 100px;
+	}
+	.section-products .section-inner{
+		background-size: auto 100%;
+	}
+}
+@media screen and (max-width: 991px) {
+	.sidebar{
+		padding: 0;
+		margin-top: 35px;
+	}
+	.welcome-info {
+	    margin-bottom: 35px;
+	    margin-left: 0;
+	    margin-top: 0;
+	}
+	.welcome-info:after{
+		top: 0;
+	}
+	.nutrition-philosophy-items ul.box-left{
+		text-align: left;
+		margin-bottom: 25px;
+	}
+	.nutrition-philosophy-items .entry-thumbnail{
+		margin: 0 20px 0 0;
+		float: left;
+	}
+	.why-choose-us ul{
+		padding-right: 0;
+		text-align: left;
+	}
+	.why-choose-us ul .entry-thumbnail{
+		float: left;
+		margin: 0 20px 0 0;
+	}
+	.why-choose-us ul li + li {
+	    padding-top: 45px;
+	}
+	.why-choose-us ul li + li .entry-thumbnail:after{
+		top: 120px;
+	}
+	.section-custom .section-inner:before{
+		display: none;
+	}
+	.section-custom:before{
+		right: 0;
+	}
+	.countdown:after{
+		right: -20%;
+	}
+	.contact-box{
+		padding-top: 45px;
+  		margin-top: 25px;
+	}
+	.contact-box:before{
+		background-image: url("../../images/bg-4.jpg");
+	    background-position: right center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    bottom: -50px;
+	    content: "";
+	    left: -20%;
+	    position: absolute;
+	    right: -20%;
+	    top: 0;
+	    z-index: -1;
+	}
+	.footer-info {
+	    padding: 55px 0 35px;
+	}
+	.footer-info .widget{
+		margin-bottom: 25px;	
+	}
+	.cats-list {
+	    margin-top: 0;
+	    padding-bottom: 0;
+	    padding-top: 0;
+	    position: static;
+	    overflow: hidden;
+	}
+	.cats-list:after{
+		display: none;
+	}
+	.cats-list .cat{
+		text-align: center;
+	}
+	.section-products{
+		padding: 0;
+		background: transparent !important;
+	}
+}
+@media screen and (max-width: 767px) {
+	.section-radius:after{
+		height: 300px;
+	}
+	#logo {
+	    left: 15px;
+	    transform: translate(0px, 0px);
+			-webkit-transform: translate(0px, 0px);
+	}
+	.header-top-left .phone{
+		display: none;
+	}
+	#navbar{
+		margin-bottom: 25px;
+	}
+	#navbar ul.navbar-nav{
+		float: none !important;
+		text-align: center;
+	}
+	#primary-navigation .navbar-nav > li{
+		margin: 0 !important;
+		float: none;
+	}
+	.clients-logo-slider .client-logo{
+		width: 50%;
+	}
+	.slider-flickity .flickity-prev-next-button{
+		left: 0;
+	}
+	.slider-flickity .flickity-prev-next-button.next {
+	    left: auto;
+	    right: 0;
+	}
+	.section-title{
+		font-size: 35px;
+	}
+	.entry-title{
+		font-size: 18px;
+	}
+	.footer-button .subscribe{
+		text-align: center;
+	}
+	.footer-button .subscribe input{
+		max-width: 400px;
+		width: 100%;
+	}
+	.footer-button .subscribe-lable{
+		float: none;
+	}
+	.footer-button .subscribe-content{
+		float: none;
+		margin-top: 15px;
+	}
+	.contact-info .contact-info-item {
+	    padding-bottom: 35px;
+	    padding-top: 35px;
+	}
+	.contact-info .contact-info-item + .contact-info-item{
+		border-top: 1px solid transparent;
+	}
+	#map-canvas {
+	    height: 250px;
+	}
+	.products .product:nth-child(n){
+		clear: none;
+		border-left-width: 2px;
+	}
+	.products .product:nth-child(2n+1){
+		clear: both;
+		border-left-width: 0px;
+	}
+	.products .product:nth-child(n):after{
+		border-bottom: 0;
+	}
+	.products .product:nth-child(2n+1):after{
+		border-bottom: 2px dashed;
+	}
+}
+@media screen and (max-width: 480px) {
+	.products .product{
+		width: 100%;
+		border: 0 !important;
+	}
+	.products .product:nth-child(n):after{
+		border-bottom: 2px dashed;
+	}
+	#map-canvas {
+	    height: 150px;
+	}
+	.page-header{
+		background-attachment: scroll !important;
+	    background-size: auto 100% !important;
+	}
+	.header-top{
+		display: none;
+	}
+	#logo{
+		width: 100px;
+	}
+	.header-middle{
+		margin: 0;
+	}
+	.page-header{
+		padding: 65px 0;
+	}
+	.clients-logo-slider .client-logo{
+		width: 100%;
+	}
+	.blog .post{
+		width: 100%;
+	}
+	.pagination .page-numbers{
+		padding: 0 10px;
+	}
+}

@@ -28,7 +28,7 @@ if ( $blog_layout == 'full-width' ) {
 <div class="page-header">
 	<h1 class="title"><span class="line-title">
 		<?php 
-		if ( is_singular() || is_home() ) {
+		if ( is_singular() ) {
 			single_post_title();
 		} elseif ( is_category() ) {
 			single_term_title();
