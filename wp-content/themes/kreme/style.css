@@ -30,3 +30,6 @@ Text Domain: mTheme
 .sticky {}
 .gallery-caption{}
 .bypostauthor {}
+.header .widget-title{
+	display: none;
+}

@@ -3,10 +3,10 @@
 get_header(); 
 
 $container 						= kreme_container();
-$blog_layout					= kreme_get_options('blog_layout',  'full-width');
-$blog_sidebar					= kreme_get_options('blog_sidebar');
-$blog_sidebar_width				= kreme_get_options('blog_sidebar_width');
-$blog_sidebar_el_class			= kreme_get_options('blog_sidebar_el_class');
+$blog_layout					= get_theme_mod('blog_layout',  'full-width');
+$blog_sidebar					= get_theme_mod('blog_sidebar');
+$blog_sidebar_width				= get_theme_mod('blog_sidebar_width');
+$blog_sidebar_el_class			= get_theme_mod('blog_sidebar_el_class');
 
 $col_content = $col_sidebar = array();
 if ( $blog_layout == 'full-width' ) {
@@ -23,22 +23,6 @@ if ( $blog_layout == 'full-width' ) {
 	}
 }
 ?>
-	
-<?php if ( !is_front_page() ) { ?>
-<div class="page-header">
-	<h1 class="title"><span class="line-title">
-		<?php 
-		if ( is_singular() ) {
-			single_post_title();
-		} elseif ( is_category() ) {
-			single_term_title();
-		} else
-			the_archive_title();
-		?>
-	</h1>
-	<?php woocommerce_breadcrumb(); ?>
-</div>
-<?php } ?>
 
 <div class="page-content">
 	<div class="<?php echo apply_filters('container', $container); ?>">

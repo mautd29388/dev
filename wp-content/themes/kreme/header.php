@@ -10,23 +10,15 @@
 <?php 
 	$boxed							= get_theme_mod('main_boxed', 'off');
 	$container 						= kreme_container();
-	$style		 					= kreme_get_options('header_styles');
-	$header_top_sidebar				= kreme_get_options('header_top_sidebar');
-	$header_middle_sidebar			= kreme_get_options('header_middle_sidebar');
-	$header_bottom_sidebar			= kreme_get_options('header_bottom_sidebar');
-?>
+	$style		 					= get_theme_mod('header_styles', 'style-v1');
+	$header_top_sidebar				= get_theme_mod('header_top_sidebar');
+	$header_middle_sidebar			= get_theme_mod('header_middle_sidebar');
+	$header_bottom_sidebar			= get_theme_mod('header_bottom_sidebar');
+	$logo							= get_theme_mod('logo', '');
+?> 
 </head>
 
 <body <?php body_class(); ?>>
-
-<?php 
-$mods = array();
-$mods[] = get_theme_mods();
-//$mods[] = get_theme_mod('page_background');
-$mods[] = get_option ( ot_settings_id ());
-
-//var_dump($mods);
-?>
 	<!--[if lt IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -37,20 +29,6 @@ $mods[] = get_option ( ot_settings_id ());
 		<header id="header" class="header <?php echo isset($style) ? $style : ''; ?>">
 			<div class="header-inner">
 	      		
-	      		<div class="site-branding">
-
-					<?php if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php endif;
-
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description ) : ?>
-						<p class="site-description"><?php echo $description; ?></p>
-					<?php endif; ?>
-				</div><!-- .site-branding -->
-				
 	      		<!-- Header Top -->
 	      		<?php 
 	      		if ( isset($header_top_sidebar) && is_array($header_top_sidebar) && count($header_top_sidebar) > 0 ) {
@@ -83,67 +61,57 @@ $mods[] = get_option ( ot_settings_id ());
 	      		
 	      		
 	      		<!-- Header Middle -->
-	      		<?php 
-	      		if ( isset($header_middle_sidebar) && is_array($header_middle_sidebar) && count($header_middle_sidebar) > 0 ) {
-	      			
-	      			$i = $j = 0;
-      				foreach ( $header_middle_sidebar as $sidebar ) {
-      					
-      					$i++;
-	      				if ( is_active_sidebar($sidebar['sidebar']) ) { 
-	      					
-	      					$j++;
-	      					
-	      					if ( $j == 1 ) { ?>
-		      				<div class="header-middle"><div class="header-middle-inner"><div class="<?php echo apply_filters('container', $container); ?>"><div class="row">
-							<?php } ?>
+				<div class="header-middle">
+					<div class="header-middle-inner">
+						<div class="container">
+						
+							<!-- Logo -->
+							<div id="logo" class="logo">
+								<a href="<?php echo esc_url( home_url() ); ?>">
+									<?php if ( isset($logo) && !empty($logo) ) { ?>
+										<img alt="" src="<?php echo $logo; ?>">
+									<?php } else echo bloginfo('name'); ?>
+								</a>
+							</div>
+						
+							<!-- Main Menu -->
+							<nav id="primary-navigation" class="navbar" role="navigation">
+								<div class="navbar-inner">
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle collapsed"
+											data-toggle="collapse" data-target="#navbar">
+											<span class="sr-only">Toggle navigation</span> <span
+												class="icon-bar"></span> <span class="icon-bar"></span> <span
+												class="icon-bar"></span>
+										</button>
+										
+									</div>
+									<div id="navbar" class="navbar-collapse collapse">
+									<?php 
+									wp_nav_menu ( 
+										array ( 
+											'theme_location' => 'primary-left',
+											'container' => '',
+											'menu_class' => 'nav navbar-nav',
+											'walker' => new mTheme_nav_walker
+										) 
+									);
+									wp_nav_menu ( 
+										array ( 
+											'theme_location' => 'primary-right',
+											'container' => '',
+											'menu_class' => 'nav navbar-nav',
+											'walker' => new mTheme_nav_walker
+										) 
+									);?>
+									</div>
+									<!--/.navbar-collapse -->
+								</div>
+							</nav><!-- End Menu -->
 							
-		      					<div class="col-sm-<?php echo esc_attr($sidebar['width']); ?> <?php echo apply_filters('sidebar_header_middle_el_class', $sidebar['el_class']); ?>">
-		      						<div class="sidebar-inner">
-		      							<?php dynamic_sidebar($sidebar['sidebar']); ?>
-		      						</div>
-		      					</div>
-	      				<?php 
-	      				}
-	      				
-	      				if ( $i == count($header_middle_sidebar) && $j > 0 ) { ?>
-				      	</div></div></div></div>
-			      		<?php }
-      				}
-	      		} 
-	      		?>
-	      		
-	      		
-	      		<!-- Header Bottom -->
-	      		<?php 
-	      		if ( isset($header_bottom_sidebar) && is_array($header_bottom_sidebar) && count($header_bottom_sidebar) > 0 ) {
-	      			
-	      			$i = $j = 0;
-      				foreach ( $header_bottom_sidebar as $sidebar ) {
-      					
-      					$i++;
-	      				if ( is_active_sidebar($sidebar['sidebar']) ) {
-	      					
-	      					$j++;
-	      					
-	      					if ( $j == 1 ) { ?>
-		      				<div class="header-bottom"><div class="header-bottom-inner"><div class="<?php echo apply_filters('container', $container); ?>"><div class="row">
-							<?php } ?>
-							
-		      					<div class="col-sm-<?php echo esc_attr($sidebar['width']); ?> <?php echo apply_filters('sidebar_header_bottom_el_class', $sidebar['el_class']); ?>">
-		      						<div class="sidebar-inner">
-		      							<?php dynamic_sidebar($sidebar['sidebar']); ?>
-		      						</div>
-		      					</div>
-				      	<?php 	
-	      				}
-	      				if ( $i == count($header_bottom_sidebar) && $j > 0 ) { ?>
-      						</div></div></div></div>
-      					<?php }
-      				}
-	      		} 
-	      		?>
-	      		
+						</div><!-- End Container -->
+					</div>
+				</div> <!-- End Header Middle -->
 			</div>
 			
 		</header>
@@ -151,3 +119,33 @@ $mods[] = get_option ( ot_settings_id ());
 
 		<!-- Main Content -->
 		<div id="main-content" class="main-content">
+			<div class="main-contents-inner">
+			
+				<?php if ( !is_front_page() ) { ?>
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="page-header-inner">
+						<div class="page-header-entry">
+							<h1 class="page-title"><span><?php echo kreme_the_title(); ?></span></h1>
+							<div class="page-breadcrumb">
+							<?php 
+							Kreme_Breadcrumb::instance(array(
+									'wrap_before' => '<div class="breadcrumb">',
+									'delimiter' => ' / ',
+									'before'      => '<span>',
+									'after'       => '</span>',
+							));
+							?>
+							</div>
+							
+						</div>
+					</div>
+					<div class="section-radius section-radius-bottom"></div>
+				</div><!-- End Page Header -->
+				<?php } ?>
+				
+				<!-- Page Content -->
+				<div class="page-content">
+					<div class="page-content-inner">
+						
+						<div class="container">

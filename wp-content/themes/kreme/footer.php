@@ -1,11 +1,15 @@
-<?php 
-$sidebar_footer_top 	= kreme_get_options('sidebar_footer_top');
-$sidebar_footer 		= kreme_get_options('sidebar_footer');
-$copyright 				= kreme_get_options('copyright', '');
-$container				= kreme_container();
-?>		
+						</div><!-- End Container -->
+					</div><!-- End Inner -->
+				</div><!-- End Page Content -->
+			</div><!-- End Inner -->
 		</div> <!-- End Main Content -->
 		
+		<?php 
+		$sidebar_footer_top 	= get_theme_mod('sidebar_footer_top');
+		$sidebar_footer 		= get_theme_mod('sidebar_footer');
+		$copyright 				= get_theme_mod('copyright', '');
+		$container				= kreme_container();
+		?>	
 		<!-- Footer -->
 		<footer id="footer" class="footer">
 		

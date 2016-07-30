@@ -103,13 +103,13 @@ function kreme_woocommerce_image_dimensions() {
 add_filter('loop_shop_per_page', 'kreme_loop_shop_per_page', 20);
 function kreme_loop_shop_per_page( $posts_per_page ) {
 
-	return kreme_get_options('shop_items', $posts_per_page);
+	return get_theme_mod('shop_items', $posts_per_page);
 }
 
 add_filter('loop_shop_columns', 'kreme_loop_shop_columns', 10, 2);
 function kreme_loop_shop_columns($columns){
 
-	return kreme_get_options('shop_columns', '3');
+	return get_theme_mod('shop_columns', '3');
 }
 
 add_filter('woocommerce_product_thumbnails_columns', 'kreme_woocommerce_product_thumbnails_columns', 10, 2);

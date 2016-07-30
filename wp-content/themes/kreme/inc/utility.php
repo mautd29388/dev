@@ -50,7 +50,7 @@ function kreme_trim( $text, $excerpt_length = 55){
  * Container
  * */
 function kreme_container(){
-	$container = get_theme_mod('main_container', 'off');//kreme_get_options('main_container', 'off');
+	$container = get_theme_mod('main_container', 'off');
 
 	if ( $container == 'off' ) {
 		return 'container';
@@ -176,7 +176,7 @@ function kreme_social_share_title(){
 
 function kreme_social_shares(){
 
-	$social = kreme_get_options('blog_social',
+	$social = get_theme_mod('blog_social',
 			array(
 					array(
 							'title' => 'Facebook',
@@ -350,19 +350,31 @@ function kreme_ot_recognized_typography_fields( $default, $field_id ) {
  	<?php 
  }
  
- /**
-  * Get Option of mTheme
-  * @param unknown $option_id
-  * @param string $default
-  * @return string
-  */
- function kreme_get_options($option_id, $default = '') {
+ function kreme_the_title() {
+ 	$title = __( 'Custom Title', 'kreme' );
+ 	
+ 	if ( is_404() ){
+ 		$title = __( 'Oops! That page can&rsquo;t be found.', 'kreme' );
+ 	
+	} elseif ( is_search() ){
+ 		$title = __( 'Search Results for:', 'kreme' ) . '<span>' . esc_html( get_search_query() ) . '</span>';
+ 				
+ 	} elseif ( is_home() && !is_front_page() ){
+ 		$title = __( 'Latest Posts', 'kreme' );
+ 				
+ 	} elseif ( is_category() ) {
+ 		$title = single_cat_title( '', false );
+
+ 	} else if ( function_exists('is_woocommerce') && is_woocommerce() ) {
+ 		$title = woocommerce_page_title(false);
+ 		
+ 	} elseif ( is_archive() ){
+ 		$title = get_the_archive_title();
+ 				
+ 	} elseif ( is_singular() ) {
+ 		$title = get_the_title();
+ 	
+ 	} 
  
- 	if ( isset($_GET[$option_id]) && !empty($_GET[$option_id]) ) {
- 		return $_GET[$option_id];
- 
- 	} elseif ( function_exists('ot_get_option') )
- 	return ot_get_option($option_id, $default);
- 
- 	return $default;
+ 	return $title;
  }

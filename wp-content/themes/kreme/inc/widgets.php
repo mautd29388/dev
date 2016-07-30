@@ -12,7 +12,7 @@ function kreme_widgets_init() {
 			'after_title' => '</h3>' 
 	) );
 	
-	$sidebar = kreme_get_options('sidebar');
+	$sidebar = get_theme_mod('sidebar');
 	
 	if ( isset($sidebar) && is_array($sidebar) && count($sidebar) > 0 ) {
 		foreach ( $sidebar as $side ) {
@@ -60,7 +60,7 @@ class kreme_Logo_Widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 		
-		$logo		= kreme_get_options('logo');
+		$logo		= get_theme_mod('logo');
 		
 		echo $args['before_widget'];
 		?>
@@ -560,4 +560,4 @@ class mTheme_Widget_Callback{
 	 }
 }
 
-new mTheme_Widget_Callback();
+//new mTheme_Widget_Callback();

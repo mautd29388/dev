@@ -7,15 +7,15 @@ get_header();
 $container 						= kreme_container();
 
 if ( is_singular( 'product' ) ) {
-	$shop_layout					= kreme_get_options('shop_single_layout',  'full-width');
-	$shop_sidebar					= kreme_get_options('shop_single_sidebar');
-	$shop_sidebar_width				= kreme_get_options('shop_single_sidebar_width');
-	$shop_sidebar_el_class			= kreme_get_options('shop_single_sidebar_el_class');
+	$shop_layout					= get_theme_mod('shop_single_layout',  'full-width');
+	$shop_sidebar					= get_theme_mod('shop_single_sidebar');
+	$shop_sidebar_width				= get_theme_mod('shop_single_sidebar_width');
+	$shop_sidebar_el_class			= get_theme_mod('shop_single_sidebar_el_class');
 } else {
-	$shop_layout					= kreme_get_options('shop_layout',  'full-width');
-	$shop_sidebar					= kreme_get_options('shop_sidebar');
-	$shop_sidebar_width				= kreme_get_options('shop_sidebar_width');
-	$shop_sidebar_el_class			= kreme_get_options('shop_sidebar_el_class');
+	$shop_layout					= get_theme_mod('shop_layout',  'full-width');
+	$shop_sidebar					= get_theme_mod('shop_sidebar');
+	$shop_sidebar_width				= get_theme_mod('shop_sidebar_width');
+	$shop_sidebar_el_class			= get_theme_mod('shop_sidebar_el_class');
 }
 
 $view 							= isset($_GET['view']) && $_GET['view'] == 'list' ? 'list' : '';
@@ -35,24 +35,6 @@ if ( $shop_layout == 'full-width' ) {
 	}
 }
 ?>
-	
-<div class="page-header">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-		<h1 class="page-title">
-			<?php 
-			if ( is_singular( 'product' ) ) {
-				echo __('Product', kreme);
-				
-			} else {
-				woocommerce_page_title();
-			} ?>
-		</h1>
-		
-	<?php endif; ?>
-	<?php woocommerce_breadcrumb(); ?>
-	<?php //do_action( 'woocommerce_archive_description' ); ?>
-</div>
 
 <div class="page-content">
 	<div class="<?php echo apply_filters('container', $container); ?>">

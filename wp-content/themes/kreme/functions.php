@@ -72,10 +72,9 @@ require (trailingslashit ( get_template_directory () ) . 'inc/init.php');
 require (trailingslashit ( get_template_directory () ) . 'inc/utility.php');
 
 /**
- * Less
+ * Function
  * */
-require (trailingslashit ( get_template_directory () ) . 'inc/less.php');
-
+require (trailingslashit ( get_template_directory () ) . 'inc/breadcrumb.php');
 
 /**
  * Widget and Sidebar

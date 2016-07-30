@@ -2,8 +2,8 @@
 
 get_header(); 
 
-$header_image = kreme_get_options('blog_image', 'http://placehold.it/1920x478/333');
-$title = kreme_get_options('blog_title', 'News &amp; Events');
+$header_image = get_theme_mod('blog_image', 'http://placehold.it/1920x478/333');
+$title = get_theme_mod('blog_title', 'News &amp; Events');
 ?>
 <div class="page-header">
 	<?php if ( isset($header_image) ) { ?>

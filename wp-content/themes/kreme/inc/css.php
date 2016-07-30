@@ -11,7 +11,7 @@ function kreme_style() {
 	 * MAIN
 	 * */
 	// Background Body
-	$__background_body = kreme_get_options('background_body');
+	$__background_body = get_theme_mod('background_body');
 	if ( isset($__background_body) && is_array($__background_body) && count($__background_body) > 0 ) {
 		$background_body = array();
 		foreach ( $__background_body as $k => $val ) {
@@ -30,8 +30,8 @@ function kreme_style() {
 	}
 	
 	// Background Boxed
-	$__background_boxed = kreme_get_options('background_boxed');
-	$boxed 			= kreme_get_options('main_boxed', 'on');
+	$__background_boxed = get_theme_mod('background_boxed');
+	$boxed 			= get_theme_mod('main_boxed', 'on');
 	if ( $boxed == 'on' && isset($__background_boxed) && is_array($__background_boxed) && count($__background_boxed) > 0 ) {
 		$background_boxed = array();
 		foreach ( $__background_boxed as $k => $val ) {
@@ -50,7 +50,7 @@ function kreme_style() {
 	}
 
 	// Background Main
-	$__background_main = kreme_get_options('background_main');
+	$__background_main = get_theme_mod('background_main');
 	if ( isset($__background_main) && is_array($__background_main) && count($__background_main) > 0 ) {
 		$background_main = array();
 		foreach ( $__background_main as $k => $val ) {
@@ -73,7 +73,7 @@ function kreme_style() {
 	 * HEADER
 	 * */
 	// Background Header
-	$__background_header = kreme_get_options('background_header');
+	$__background_header = get_theme_mod('background_header');
 	if ( isset($__background_header) && is_array($__background_header) && count($__background_header) > 0 ) {
 		$background_header = array();
 		foreach ( $__background_header as $k => $val ) {
@@ -92,7 +92,7 @@ function kreme_style() {
 	}
 	
 	// Background Top
-	$__background_header_top = kreme_get_options('background_header_top');
+	$__background_header_top = get_theme_mod('background_header_top');
 	if ( isset($__background_header_top) && is_array($__background_header_top) && count($__background_header_top) > 0 ) {
 		$background_header_top = array();
 		foreach ( $__background_header_top as $k => $val ) {
@@ -111,7 +111,7 @@ function kreme_style() {
 	}
 	
 	// Background Header Middle
-	$__background_header_middle = kreme_get_options('background_header_middle');
+	$__background_header_middle = get_theme_mod('background_header_middle');
 	if ( isset($__background_header_middle) && is_array($__background_header_middle) && count($__background_header_middle) > 0 ) {
 		$background_header_middle = array();
 		foreach ( $__background_header_middle as $k => $val ) {
@@ -130,7 +130,26 @@ function kreme_style() {
 	}
 	
 	// Background Header Bottom
-	$__background_header_bottom = kreme_get_options('background_header_bottom');
+	$__background_page_header = get_theme_mod('background_page_header'); 
+	if ( isset($__background_page_header) && is_array($__background_page_header) && count($__background_page_header) > 0 ) {
+		$background_page_header = array();
+		foreach ( $__background_page_header as $k => $val ) {
+	
+			if ( $k == 'background-image' )
+				$background_page_header[] = $k . ': url(' . $val . ')' . '!important';
+	
+			else
+				$background_page_header[] = $k . ':' . $val . '!important';
+		}
+		if ( count($background_page_header) > 0 ) {
+			$style .= '.page-header {' ;
+			$style .= implode(';', $background_page_header);
+			$style .= '}';
+		}
+	}
+	
+	// Background Page Header
+	$__background_header_bottom = get_theme_mod('background_header_bottom');
 	if ( isset($__background_header_bottom) && is_array($__background_header_bottom) && count($__background_header_bottom) > 0 ) {
 		$background_header_bottom = array();
 		foreach ( $__background_header_bottom as $k => $val ) {
@@ -138,8 +157,8 @@ function kreme_style() {
 			if ( $k == 'background-image' )
 				$background_header_bottom[] = $k . ': url(' . $val . ')' . '!important';
 	
-			else
-				$background_header_bottom[] = $k . ':' . $val . '!important';
+				else
+					$background_header_bottom[] = $k . ':' . $val . '!important';
 		}
 		if ( count($background_header_bottom) > 0 ) {
 			$style .= '.header .header-bottom {' ;
@@ -153,7 +172,7 @@ function kreme_style() {
 	 * FOOTER
 	 * */
 	// Background Footer
-	$__background_footer = kreme_get_options('background_footer');
+	$__background_footer = get_theme_mod('background_footer');
 	if ( isset($__background_footer) && is_array($__background_footer) && count($__background_footer) > 0 ) {
 		$background_footer = array();
 		foreach ( $__background_footer as $k => $val ) {
@@ -172,7 +191,7 @@ function kreme_style() {
 	}
 	
 	// Background Footer Top
-	$__background_footer_top = kreme_get_options('background_footer_top');
+	$__background_footer_top = get_theme_mod('background_footer_top');
 	if ( isset($__background_footer_top) && is_array($__background_footer_top) && count($__background_footer_top) > 0 ) {
 		$background_footer_top = array();
 		foreach ( $__background_footer_top as $k => $val ) {
@@ -191,7 +210,7 @@ function kreme_style() {
 	}
 	
 	// Background Footer Middle
-	$__background_footer_middle = kreme_get_options('background_footer_middle');
+	$__background_footer_middle = get_theme_mod('background_footer_middle');
 	if ( isset($__background_footer_middle) && is_array($__background_footer_middle) && count($__background_footer_middle) > 0 ) {
 		$background_footer_middle = array();
 		foreach ( $__background_footer_middle as $k => $val ) {
@@ -214,7 +233,7 @@ function kreme_style() {
 	 * TYPOGRAPHY
 	 * */
 	// Typography Body
-	$typography = kreme_get_options('typography_body');
+	$typography = get_theme_mod('typography_body');
 	if ( isset($typography) && is_array($typography) && count($typography) > 0 ) {
 		$typography_body = array();
 		if ( isset($typography['font-family']) && !empty($typography['font-family']) ) {
@@ -242,7 +261,7 @@ function kreme_style() {
 	}
 	
 	// Typography Heading
-	$heading = kreme_get_options('typography_heading');
+	$heading = get_theme_mod('typography_heading');
 	if ( isset($heading) && is_array($heading) && count($heading) > 0 ) {
 		$heading_css = array();
 		if ( isset($heading['font-family']) && !empty($heading['font-family']) ) {
@@ -278,13 +297,13 @@ function kreme_style() {
 	$__background_page_title = array();
 	
 	if ( function_exists('is_woocommerce') && is_woocommerce() ) {
-		$__background_page_title = kreme_get_options('shop_background_title');
+		$__background_page_title = get_theme_mod('shop_background_title');
 		
 	} elseif ( is_page() ) {
 		$__background_page_title = get_post_meta(get_the_ID(), '__background_title', true);
 		
 	} else {
-		$__background_page_title = kreme_get_options('blog_background_title');
+		$__background_page_title = get_theme_mod('blog_background_title');
 	}
 	
 	if ( isset($__background_page_title) && is_array($__background_page_title) && count($__background_page_title) > 0 ) {

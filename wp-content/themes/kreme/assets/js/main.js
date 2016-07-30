@@ -5,7 +5,7 @@
 		
 		
 		
-		// Filter Img & replace to placehold.it
+		/*// Filter Img & replace to placehold.it
 		$('body').imagesLoaded(function() {
 			
 			var $url =  window.location.href;
@@ -53,7 +53,7 @@
 				console.log($html);
 				
 			});
-		}); 
+		}); */
 		
 		
 		$('body').find('.section').each( function() {
