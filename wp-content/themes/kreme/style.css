@@ -33,3 +33,18 @@ Text Domain: mTheme
 .header .widget-title{
 	display: none;
 }
+.footer-button .subscribe .wysija-submit{
+	display: none;
+}
+.copyright p{
+	margin: 0;
+}
+body .wpb_button, 
+body .wpb_content_element, 
+body ul.wpb_thumbnails-fluid > li{
+	margin-bottom: 0;
+}
+.wrap-radius{
+	position: relative;
+	overflow: visible !important;
+}

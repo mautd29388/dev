@@ -41,10 +41,13 @@ add_filter ( 'ot_meta_boxes', '__return_true' );
 
 add_filter ( 'ot_post_formats', '__return_true' );
 
-add_filter ( 'ot_options_id', 'kreme_theme_mods' );
+add_filter ( 'ot_options_id', 'kreme_options_id' );
 
-add_action ( 'init', 'kreme_options' );
+add_filter ( 'ot_settings_id', 'kreme_settings_id' );
 
+add_action ( 'init', 'kreme_options_default' );
+
+add_action( 'ot_after_theme_options_save', 'kreme_set_theme_mods' );
 
 /**
  * TGM-Plugin-Activation

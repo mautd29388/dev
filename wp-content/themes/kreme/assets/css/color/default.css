@@ -55,7 +55,7 @@ ul.navbar-nav a,
 }
 .header-top .phone .fa,
 .header .cart-icon .cart-count,
-.section-welcome .section-content figure .more,
+.section-welcome .section-content .more,
 .section-products .section-header .section-title,
  .testimonial .entry-body,
  .section-custom,
@@ -142,7 +142,7 @@ ul.navbar-nav li.active > a,
 .products .product .add_to_cart_button:hover:after,
 .products .loadmore a:hover,
 .related-product .related-product-title,
-.section-welcome .section-content figure .more:hover{
+.section-welcome .section-content .more:hover{
 	color: #adc32b;
 }
 .hot-detail .entry-subtitle span,
@@ -176,7 +176,7 @@ ul.navbar-nav li.active > a,
 .section-custom-1 .section-content a,
 .cat-detail .entry .buttons .button,
 .footer-social a:hover,
-.section-welcome .section-content figure .more:hover{
+.section-welcome .section-content .more:hover{
 	background-color: #FFF;
 }
 .section-products,
@@ -188,7 +188,7 @@ ul.navbar-nav li.active > a,
 .bg-f-color,
 .header-top .phone .fa,
 .header .cart-icon .cart-count,
-.section-welcome .section-content figure .more,
+.section-welcome .section-content .more,
 .section-bg .section-inner:after,
 .nutrition-philosophy-items .entry-thumbnail .np-icon,
 .testimonial .entry-title:after,
@@ -262,7 +262,7 @@ form textarea:focus,
 .tagcloud a:hover,
 .products .product .add_to_cart_button:after,
 .related-product .related-product-title:after,
-.section-welcome .section-content figure .more{
+.section-welcome .section-content .more{
 	border-color: #adc32b;
 }
 
@@ -280,7 +280,7 @@ body,
 .title,
 .entry-title,
 #primary-navigation,
-.section-welcome .section-content figure .more,
+.section-welcome .section-content .more,
 .buttons .button,
 .woocommerce .buttons .button,
 .cats-list .cat-title,

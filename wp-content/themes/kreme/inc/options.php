@@ -32,6 +32,9 @@ function kreme_options() {
 	/* allow settings to be filtered before saving */
 	$custom_settings = apply_filters ( 'kreme_init_options_settings', $custom_settings );
 	
+	/* allow settings to be filtered before saving */
+	$custom_settings = apply_filters( ot_settings_id() . '_args', $custom_settings );
+	
 	/* settings are not the same update the DB */
 	if ($saved_settings !== $custom_settings) {
 		update_option ( ot_settings_id (), $custom_settings );

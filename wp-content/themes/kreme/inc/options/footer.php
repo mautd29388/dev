@@ -91,6 +91,7 @@ function kreme_init_options_footer($custom_settings){
 							'label' => __ ( 'Copyright', 'kreme' ),
 							'desc' => __ ( 'Enter the text that displays in the copyright bar. HTML markup can be used.', 'kreme' ),
 							'type' => 'textarea',
+							'std'	=> __('&copy; Copyright <a href="http://themeforest.net/user/mtheme_market">mTheme</a> 2016 .All Rights Reserved.', 'kreme'),
 							'section' => 'footer',
 							'rows' => '10',
 					);

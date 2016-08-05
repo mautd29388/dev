@@ -20,6 +20,10 @@ function kreme_setup() {
 	register_nav_menus( array(
 			'primary-right' => __( 'Primary Right',  'kreme' ),
 	) );
+	
+	register_nav_menus( array(
+			'footer-menu' => __( 'Footer Menu',  'kreme' ),
+	) );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -85,7 +89,7 @@ function kreme_options_default() {
 		update_option ( 'medium_size_h', 0 );
 		update_option ( 'medium_size_w', 1000 );
 		update_option ( 'posts_per_page', 3 );
-		//update_option ( 'users_can_register', 1 );
+		update_option ( 'users_can_register', 1 );
 	}
 }
 
@@ -114,13 +118,35 @@ function kreme_post_classes($classes) {
 }
 
 /**
- * Theme Mods
+ * Settings id
  */
-function kreme_theme_mods() {
+function kreme_settings_id() {
 
 	$theme = get_option( 'stylesheet' );
 
-	return "theme_mods_$theme";
+	return $theme . '_option_settings';
+}
+
+/**
+ * Theme options id
+ */
+function kreme_options_id() {
+
+	$theme = get_option( 'stylesheet' );
+
+	return $theme . "_options_id";
+}
+
+/**
+ * Set Theme Mods
+ */
+function kreme_set_theme_mods( $options ) {
+
+	if ( isset($options) && is_array($options) && count($options) > 0 ) {
+		foreach ( $options as $name => $value ) {
+			set_theme_mod($name, $value);
+		}
+	}
 }
 
 /**
@@ -129,6 +155,7 @@ function kreme_theme_mods() {
 function kreme_disable_comments_page_support() {
 	remove_post_type_support ( 'page', 'comments' );
 }
+
 
 /**
  * pre get posts
