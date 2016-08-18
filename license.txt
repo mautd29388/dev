@@ -1,4 +1,4 @@
-WordPress - Web publishing software
+WordPress - Web publishing software. Demo fix
 
 Copyright 2011-2016 by the contributors
 
