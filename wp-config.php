@@ -22,13 +22,14 @@
 /** The name of the database for WordPress */
 define('DB_NAME', 'tf_kreme');
 
-/** MySQL database username */
-define('DB_USER', 'root');
-
-/** MySQL database password */
-define('DB_PASSWORD', '');
-
 /** MySQL hostname */
+=======
+/*define('DB_USER', 'dev');
+define('DB_PASSWORD', 'admin123');
+define('DB_HOST', '23.229.137.229');*/
+
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
