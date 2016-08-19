@@ -1,4 +1,4 @@
-WordPress - Web publishing software. Demo fix
+WordPress - Web publishing software. Demo fix test command git
 
 Copyright 2011-2016 by the contributors
 

@@ -57,12 +57,12 @@ function my_theme_register_required_plugins() {
     		'required'           => true,
 		),
 
-		array(
+		/*array(
     		'name'               => 'Revolution Slider',
     		'slug'               => 'revslider', 
     		'source'             => 'http://source.mtheme.org/plugins/revslider.zip', 
     		'required'           => true, 
-		),
+		),*/
     	/*
 		array(
 				'name'               => 'OptionTree',

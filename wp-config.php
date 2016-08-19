@@ -20,16 +20,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'dev_tpl');
+define('DB_NAME', 'tf_kreme');
 
 /** MySQL database username */
-define('DB_USER', 'dev');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'admin123');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-define('DB_HOST', '23.229.137.229');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -58,13 +58,13 @@ define('NONCE_SALT',       'OcwplNWpLdrnGgiuvaU7Fpm3reqHGz44adptfA8orrmNcD1SzEyV
 /**
  * Other customizations.
  */
-define('FS_METHOD','direct');define('FS_CHMOD_DIR',0755);define('FS_CHMOD_FILE',0644);
-define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
+//define('FS_METHOD','direct');define('FS_CHMOD_DIR',0755);define('FS_CHMOD_FILE',0644);
+//define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
 
 /**
  * Turn off automatic updates since these are managed upstream.
  */
-define('AUTOMATIC_UPDATER_DISABLED', true);
+//define('AUTOMATIC_UPDATER_DISABLED', true);
 
 
 /**#@-*/
