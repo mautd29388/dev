@@ -7,6 +7,7 @@
  * Author: mTheme
  * Author URI: http://themeforest.net/user/mtheme_market
  * License: license purchased
+ * GitHub Plugin URI: https://github.com/mautd29388/dev/tree/master/wp-content/plugins/kreme-plugin
  */
 
 define( 'mTheme_URL', plugin_dir_url( __FILE__ ) );
